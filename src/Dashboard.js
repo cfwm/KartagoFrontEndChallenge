@@ -4,8 +4,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 
 export default () => (
-    <Card>
-        <CardHeader title="Welcome to the administration" />
-        <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+    <Card align="center">
+        <CardHeader title="Welcome to the Social Media Tasks Management" />
+        <CardContent>An ERP Software where you can easy manage the activities of yours agents, monitoring, creating and editing ours all that.</CardContent>
     </Card>
 );
