@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMediaQuery } from '@material-ui/core';
-import { Filter, Create, Edit, List, SimpleList, Datagrid, TextField, ReferenceField, EditButton, SimpleForm, ReferenceInput, SelectInput, TextInput, BooleanInput } from 'react-admin';
+import { Filter, Create, Edit, List, SimpleList, Datagrid, TextField, ReferenceField, EditButton, SimpleForm, ReferenceInput, SelectInput, TextInput, BooleanInput, BooleanField } from 'react-admin';
 
 const TodoFilter = (props) => (
     <Filter {...props}>
@@ -14,21 +14,21 @@ const TodoFilter = (props) => (
 export const TodoList = props => {
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
     return (
-        <List filters={<TodoFilter />} {...props}>
+        <List title="List of To Do's" filters={<TodoFilter />} {...props}>
             {isSmall ? (
                 <SimpleList
                 primaryText={record => record.title}
-                secondaryText={record => `${record.views} views`}
-                tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
+                secondaryText={record => record.userId}
+                tertiaryText={record => record.completed}
                 />
             ) : (
-                <Datagrid>
+                <Datagrid> 
                     <TextField source="id" />
                     <ReferenceField label="User" source="userId" reference="users">
                         <TextField source="name" />
                     </ReferenceField>
                     <TextField source="title" />
-                    <TextField source="completed" />
+                    <BooleanField source="completed" />
                     <EditButton />
                 </Datagrid>
             )}
